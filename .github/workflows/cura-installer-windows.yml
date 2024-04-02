@@ -117,7 +117,7 @@ jobs:
       # Additional step to run the conan create command
       - name: Run Conan create command
         run: |
-          ls -la
+          ls
           conan create fdm_materials fdm_materials/5.7.2-alpha.0+331490@go3d/testing --build=missing --update
         working-directory: fdm_materials
         
