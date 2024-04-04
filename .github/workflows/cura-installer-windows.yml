@@ -92,11 +92,12 @@ jobs:
       - name: Create default Conan profile
         run: conan profile new default --detect
         
-      - name: Cache Conan packages
-        uses: actions/cache@v2
+    # Cache Conan packages
+      - uses: actions/cache@v2
         with:
           path: |
             ~/.conan/data
+            ./cura_inst
           key: ${{ runner.os }}-conan-${{ hashFiles('**/conanfile.txt', '**/conanfile.py') }}
           restore-keys: |
             ${{ runner.os }}-conan-
