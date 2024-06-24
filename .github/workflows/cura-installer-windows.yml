@@ -92,15 +92,17 @@ jobs:
       - name: Create default Conan profile
         run: conan profile new default --detect
         
-    # Cache Conan packages
-      - uses: actions/cache@v2
+      - name: Cache Conan dependencies
+        uses: actions/cache@v2
         with:
           path: |
             ~/.conan/data
-            ./cura_inst
-          key: ${{ runner.os }}-conan-${{ hashFiles('**/conanfile.txt', '**/conanfile.py') }}
+            ~/.conan/profiles
+            ~/.conan/search_index
+          key: conan-${{ runner.os }}-${{ hashFiles('**/conanfile.txt') }}
           restore-keys: |
-            ${{ runner.os }}-conan-
+            conan-${{ runner.os }}-
+            
       - name: Get Conan configuration
         run: |
           $env:CURA_APP_NAME = "Go3dPrintPro"
