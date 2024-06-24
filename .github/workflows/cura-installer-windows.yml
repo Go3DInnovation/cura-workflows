@@ -135,7 +135,8 @@ jobs:
 
       - name: Create Conan package
         run: |
-          conan create . $Env:CURA_CONAN_VERSION --build=missing --update ${{ inputs.conan_extra_args }}
+          conan create . $Env:CURA_CONAN_VERSION --build=missing  --enable_plugins
+          # --update
 
 
       - name: Install Conan package
