@@ -90,7 +90,7 @@ jobs:
         run: pip install -r .\.github\workflows\requirements-runner.txt
 
       - name: Create default Conan profile
-        run: conan profile new default --detect
+        run: conan profile new default --detect --force
         
       - name: Cache Conan dependencies
         uses: actions/cache@v2
