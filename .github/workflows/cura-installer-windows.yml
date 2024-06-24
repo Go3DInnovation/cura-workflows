@@ -137,7 +137,7 @@ jobs:
 
       - name: Create Conan package
         run: |
-          conan create . $Env:CURA_CONAN_VERSION --build=missing --update
+          conan create . $Env:CURA_CONAN_VERSION --build=missing --update -j4
 
       - name: Install Conan package
         run: |
