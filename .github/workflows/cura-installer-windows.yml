@@ -107,21 +107,21 @@ jobs:
           conan config install https://github.com/Ultimaker/conan-config.git
           conan config install https://github.com/Ultimaker/conan-config.git -a "-b runner/${{ runner.os }}/${{ runner.arch }}"
 
-      - name: Setup Sentry CLI
-        uses: mathieu-bour/setup-sentry-cli@v1
-        with:
-          version: latest
-          token: ${{ secrets.CURAENGINE_SENTRY_TOKEN }}
-          organization: go3d
-          project: go3dprintpro
+      # - name: Setup Sentry CLI
+      #   uses: mathieu-bour/setup-sentry-cli@v1
+      #   with:
+      #     version: latest
+      #     token: ${{ secrets.CURAENGINE_SENTRY_TOKEN }}
+      #     organization: go3d
+      #     project: go3dprintpro
             
         # New step to checkout another repository
-      - name: Checkout fdm_materials repo
-        uses: actions/checkout@v4
-        with:
-          repository: Go3DInnovation/fdm_materials 
-          ref: master
-          path: fdm_materials # Specifies the directory where the repo should be checked out
+      # - name: Checkout fdm_materials repo
+      #   uses: actions/checkout@v4
+      #   with:
+      #     repository: Go3DInnovation/fdm_materials 
+      #     ref: master
+      #     path: fdm_materials # Specifies the directory where the repo should be checked out
 
       # Additional step to run the conan create command
       - name: Run Conan create command
@@ -135,9 +135,7 @@ jobs:
 
       - name: Create Conan package
         run: |
-          conan create . $Env:CURA_CONAN_VERSION --build=missing  --enable_plugins
-          # --update
-
+          conan create . $Env:CURA_CONAN_VERSION --build=missing --update
 
       - name: Install Conan package
         run: |
