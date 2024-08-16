@@ -76,7 +76,7 @@ jobs:
           fetch-depth: 1
 
       - name: Sync pip requirements
-        run: curl -O https://raw.githubusercontent.com/Ultimaker/cura-workflows/main/.github/workflows/requirements-runner.txt
+        run: curl -O https://raw.githubusercontent.com/Go3DInnovation/cura-workflows/main/.github/workflows/requirements-runner.txt
         working-directory: .github\workflows
 
       - name: Setup Python and pip
