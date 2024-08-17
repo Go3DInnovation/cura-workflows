@@ -197,7 +197,6 @@ jobs:
 
       - name: Create the Windows exe installer (Powershell)
         run: |
-          .\venv\Scripts\activate
           python ..\cura_inst\packaging\NSIS\create_windows_installer.py ../cura_inst . "${{steps.filename.outputs.INSTALLER_FILENAME }}.exe"
         working-directory: dist
 
