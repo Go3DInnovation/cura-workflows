@@ -214,7 +214,7 @@ jobs:
           conan remove "cura_private_data*" -f || true
 
       - name: Upload the msi
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: ${{steps.filename.outputs.INSTALLER_FILENAME }}-msi
           path: |
@@ -222,7 +222,7 @@ jobs:
           retention-days: 5
 
       - name: Upload the exe
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: ${{steps.filename.outputs.INSTALLER_FILENAME }}-exe
           path: |
@@ -239,7 +239,7 @@ jobs:
 
       # NOTE: The extension is .sh, since this isn't going to build-environment, so not on the Win build image.
       - name: Upload the run info
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: windows-run-info
           path: |
