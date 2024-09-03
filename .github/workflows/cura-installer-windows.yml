@@ -128,6 +128,13 @@ jobs:
         run: |
           conan create . fdm_materials/5.7.10@go3d/stable --build=missing
         working-directory: fdm_materials
+
+      - name: Clone CuraEngine from Fracktal Works repository
+        run: |
+          cd ..
+          git clone https://github.com/Ultimaker/CuraEngine.git
+          cd CuraEngine
+          conan create . curaengine/5.8.0@go3d/stable --build=missing --update
         
       - name: Add Conan Center remote
         run: |
@@ -139,7 +146,7 @@ jobs:
 
       - name: Install Conan package
         run: |
-          conan install $Env:CURA_CONAN_VERSION ${{ inputs.conan_args }}  --build=missing --update -if cura_inst -g VirtualPythonEnv -o cura:enterprise=False -o cura:staging=False -o cura:internal=False -c tools.build:skip_test=True -s curaengine:build_type=RelWithDebInfo -s arcus:build_type=RelWithDebInfo -s clipper:build_type=RelWithDebInfo -j4
+          conan install $Env:CURA_CONAN_VERSION ${{ inputs.conan_args }} --require-override=curaengine/5.8.0@go3d/stable --build=missing --update -if cura_inst -g VirtualPythonEnv -o cura:enterprise=False -o cura:staging=False -o cura:internal=False -c tools.build:skip_test=True -s curaengine:build_type=RelWithDebInfo -s arcus:build_type=RelWithDebInfo -s clipper:build_type=RelWithDebInfo -j4
 
       - name: Set Environment variables for Cura (Powershell)
         run: |
