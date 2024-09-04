@@ -129,7 +129,7 @@ jobs:
           conan create . fdm_materials/5.7.10@go3d/stable --build=missing
         working-directory: fdm_materials
 
-      - name: Clone CuraEngine from Fracktal Works repository
+      - name: Clone CuraEngine from repository
         run: |
           cd ..
           git clone https://github.com/Ultimaker/CuraEngine.git
