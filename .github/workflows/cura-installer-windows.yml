@@ -133,6 +133,7 @@ jobs:
         run: |
           cd ..
           git clone https://github.com/Ultimaker/CuraEngine.git
+          git checkout 5.7.0
           cd CuraEngine
           conan create . curaengine/5.8.0@go3d/stable --build=missing --update
         
@@ -146,7 +147,7 @@ jobs:
 
       - name: Install Conan package
         run: |
-          conan install $Env:CURA_CONAN_VERSION ${{ inputs.conan_args }} --require-override=curaengine/5.8.0@go3d/stable --build=missing --update -if cura_inst -g VirtualPythonEnv -o cura:enterprise=False -o cura:staging=False -o cura:internal=False -c tools.build:skip_test=True -s curaengine:build_type=RelWithDebInfo -s arcus:build_type=RelWithDebInfo -s clipper:build_type=RelWithDebInfo -j4
+          conan install $Env:CURA_CONAN_VERSION ${{ inputs.conan_args }} --require-override=curaengine/5.8.0@go3d/stable --build=missing --update -if cura_inst -g VirtualPythonEnv -o cura:enterprise=False -o cura:staging=False -o cura:internal=False -c tools.build:skip_test=True -s arcus:build_type=RelWithDebInfo -s clipper:build_type=RelWithDebInfo -j4
 
       - name: Set Environment variables for Cura (Powershell)
         run: |
